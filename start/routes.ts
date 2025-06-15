@@ -15,12 +15,12 @@ import { pathToFileURL } from 'node:url'
 import { resolvePage } from '../lib/pageResolver.js'
 
 const pagesDir = app.makePath('app', 'pages')
-const files = await fg(`${pagesDir}/**/route.tsx`)
+const files = await fg(`${pagesDir}/**/route.{ts,tsx,js,jsx}`)
 
 function fileToUrl(file: string) {
   return file
     .replace(pagesDir, '')
-    .replace('/route.tsx', '')
+    .replace(/\/route\.[jt]sx?$/, '')
 }
 
 for (const relPath of files) {
