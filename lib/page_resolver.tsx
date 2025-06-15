@@ -17,7 +17,7 @@ export async function resolvePage(
   }
 
   const render = async () => {
-    const loaderData = route.loader ? await route.loader(ctx) : null
+    const loaderData = route.loader ? await route.loader(ctx) : {}
     const meta = route.meta ? route.meta({ ctx, loaderData }) : []
 
     return ctx.jsx.stream(route.view, {

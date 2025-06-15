@@ -1,5 +1,5 @@
-import { csrfField } from "adonisjsx";
-import { defineRoute } from "../../../lib/route_module.js";
+import { Form } from "#components/form";
+import { defineRoute } from "#lib/route_module";
 
 export default defineRoute({
   meta() {
@@ -14,12 +14,11 @@ export default defineRoute({
   view({ ctx }) {
     const message = ctx.session.flashMessages.pull('message')
     return (
-      <form method="POST">
-        {csrfField()}
+      <Form method="POST">
         <input name="email" type="email"></input>
         <button>Submit</button>
         {message && <div>{message}</div>}
-      </form>
+      </Form>
     )
   }
 })

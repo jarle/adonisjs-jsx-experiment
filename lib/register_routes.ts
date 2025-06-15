@@ -3,7 +3,7 @@ import router from "@adonisjs/core/services/router"
 import fg from 'fast-glob'
 import path from 'node:path'
 import { pathToFileURL } from 'node:url'
-import { resolvePage } from '../lib/page_resolver.js'
+import { resolvePage } from './page_resolver.js'
 
 const pagesDir = app.makePath('app', 'pages')
 const files = await fg([

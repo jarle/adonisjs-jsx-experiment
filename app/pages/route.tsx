@@ -1,5 +1,5 @@
-import { viteReactRefresh } from "adonisjsx"
-import { defineRoute } from "../../lib/route_module.js"
+import { defineRoute } from "#lib/route_module"
+import { viteAssets, viteReactRefresh } from "adonisjsx"
 
 export async function Layout({
   children,
@@ -13,6 +13,8 @@ export async function Layout({
       <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {await viteAssets(['resources/js/app.js'])}
+        {await viteAssets(['resources/css/app.css'])}
         {await viteReactRefresh()}
         {...meta}
       </head>
