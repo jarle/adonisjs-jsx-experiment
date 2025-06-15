@@ -21,6 +21,7 @@ function fileToUrl(file: string) {
   return file
     .replace(pagesDir, '')
     .replace(/\/route\.[jt]sx?$/, '')
+    .replace(/\./, '/')
 }
 
 for (const relPath of files) {

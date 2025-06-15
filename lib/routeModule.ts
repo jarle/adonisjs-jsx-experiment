@@ -8,7 +8,7 @@ export type Action<TCtx = HttpContext> = (
 export interface RouteModule<TData = unknown, TCtx = {}> {
   loader?: Loader<TData, TCtx>
   action?: Action<TCtx>
-  view: (props: { loaderData: TData }) => JSX.Element
+  view: (props: { loaderData: TData } & TCtx) => JSX.Element
 }
 
 export function defineRoute<TData, TCtx = { ctx: HttpContext }>(

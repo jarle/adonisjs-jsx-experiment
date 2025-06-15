@@ -1,17 +1,19 @@
-import logger from "@adonisjs/core/services/logger";
 import { csrfField } from "adonisjsx";
 import { defineRoute } from "../../../lib/routeModule.js";
 
 export default defineRoute({
   async action({ ctx }) {
-    logger.info(ctx.request.body(), "Received post")
+    const email = ctx.request.body()['email']
+    ctx.session.flash('message', `Stored email ${email}`)
   },
-  view() {
+  view({ ctx }) {
+    const message = ctx.session.flashMessages.pull('message')
     return (
       <form method="POST">
         {csrfField()}
         <input name="email"></input>
         <button>Submit</button>
+        {message && <div>{message}</div>}
       </form>
     )
   }

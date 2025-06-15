@@ -31,10 +31,9 @@ export async function resolvePage(
   }
 
   if (verb === 'POST' && route.action) {
-    console.log("Post received")
     await route.action({ ctx })
-    return render()
+    return ctx.response.redirect(ctx.request.url())
   }
 
-  throw new Error(`Unsupported verb ${verb} for this route`)
+  throw new Error(`Unsupported verb ${verb} for route ${ctx.request.url()}`)
 }
