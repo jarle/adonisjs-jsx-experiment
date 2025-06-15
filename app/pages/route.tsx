@@ -2,10 +2,14 @@ import { defineRoute } from "../../lib/routeModule.js"
 
 export default defineRoute({
   async loader() {
-    return { hello: 'world' }
+    return { message: 'world' }
   },
 
   view({ loaderData }) {
-    return <div>Hello from component requested at {loaderData?.hello}</div>
+    return (
+      <h1 class="text-3xl font-bold underline">
+        Hello {loaderData.message}!
+      </h1>
+    )
   },
 })
