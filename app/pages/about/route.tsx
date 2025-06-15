@@ -2,6 +2,11 @@ import { csrfField } from "adonisjsx";
 import { defineRoute } from "../../../lib/routeModule.js";
 
 export default defineRoute({
+  meta() {
+    return [{
+      title: 'About'
+    }]
+  },
   async action({ ctx }) {
     const email = ctx.request.body()['email']
     ctx.session.flash('message', `Stored email ${email}`)

@@ -1,8 +1,9 @@
 import { HttpContext } from "@adonisjs/core/http"
 import app from "@adonisjs/core/services/app"
+import { Component } from "adonisjsx"
 
 const pagesDir = app.makePath('app', 'pages')
-const { default: rootRoute } = await import(`${pagesDir}/root.js`)
+const { default: Root }: { default: Component<{ meta: any }> } = await import(`${pagesDir}/root.js`)
 
 export async function resolvePage(
   ctx: HttpContext,
@@ -16,9 +17,11 @@ export async function resolvePage(
   }
 
   const render = async () => {
-    const loaderData = route.loader ? route.loader(ctx) : null
+    const loaderData = route.loader ? await route.loader(ctx) : null
+    const meta = route.meta ? route.meta({ ctx, loaderData }) : []
+
     return ctx.jsx.stream(route.view, {
-      layout: rootRoute,
+      layout: ({ children }) => <Root children={children} meta={meta} />,
       data: {
         loaderData,
         ctx

@@ -1,11 +1,14 @@
 import { HttpContext } from "@adonisjs/core/http"
+import { MetaDescriptor } from "./layout.js"
 
+export type Meta<TCtx = {}> = (ctx: TCtx) => Promise<MetaDescriptor[]> | MetaDescriptor[]
 export type Loader<TData, TCtx = {}> = (ctx: TCtx) => Promise<TData> | TData
 export type Action<TCtx = HttpContext> = (
   ctx: TCtx,
 ) => Promise<void>
 
 export interface RouteModule<TData = unknown, TCtx = {}> {
+  meta?: Meta<TCtx>
   loader?: Loader<TData, TCtx>
   action?: Action<TCtx>
   view: (props: { loaderData: TData } & TCtx & { rid: string | number }) => JSX.Element
