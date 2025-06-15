@@ -11,7 +11,7 @@ export default defineRoute({
     return (
       <form method="POST">
         {csrfField()}
-        <input name="email"></input>
+        <input name="email" type="email"></input>
         <button>Submit</button>
         {message && <div>{message}</div>}
       </form>

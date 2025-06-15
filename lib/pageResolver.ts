@@ -16,13 +16,14 @@ export async function resolvePage(
   }
 
   const render = async () => {
-    const loaderData = route.loader ? await route.loader(ctx) : null
-    return ctx.jsx.render(route.view, {
+    const loaderData = route.loader ? route.loader(ctx) : null
+    return ctx.jsx.stream(route.view, {
       layout: rootRoute,
       data: {
         loaderData,
         ctx
-      }
+      },
+      errorCallback: (error) => ([`Rendering failed: ${error.message}`, 500])
     })
   }
 
