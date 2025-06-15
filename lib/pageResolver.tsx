@@ -3,7 +3,7 @@ import app from "@adonisjs/core/services/app"
 import { Component } from "adonisjsx"
 
 const pagesDir = app.makePath('app', 'pages')
-const { default: Root }: { default: Component<{ meta: any }> } = await import(`${pagesDir}/root.js`)
+const { Layout: Root }: { Layout: Component<{ meta: any }> } = await import(`${pagesDir}/route.js`)
 
 export async function resolvePage(
   ctx: HttpContext,

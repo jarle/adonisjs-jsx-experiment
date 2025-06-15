@@ -3,9 +3,9 @@ import { defineRoute } from "../../../lib/routeModule.js";
 
 export default defineRoute({
   meta() {
-    return [{
-      title: 'About'
-    }]
+    return [
+      <title>About</title>
+    ]
   },
   async action({ ctx }) {
     const email = ctx.request.body()['email']

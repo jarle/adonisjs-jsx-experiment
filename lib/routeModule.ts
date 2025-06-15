@@ -1,7 +1,6 @@
 import { HttpContext } from "@adonisjs/core/http"
-import { MetaDescriptor } from "./layout.js"
 
-export type Meta<TCtx = {}> = (ctx: TCtx) => Promise<MetaDescriptor[]> | MetaDescriptor[]
+export type Meta<TCtx = {}> = (ctx: TCtx) => Promise<JSX.Element[]> | JSX.Element[]
 export type Loader<TData, TCtx = {}> = (ctx: TCtx) => Promise<TData> | TData
 export type Action<TCtx = HttpContext> = (
   ctx: TCtx,
