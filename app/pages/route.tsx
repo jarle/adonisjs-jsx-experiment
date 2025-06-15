@@ -1,5 +1,5 @@
 import { viteReactRefresh } from "adonisjsx"
-import { defineRoute } from "../../lib/routeModule.js"
+import { defineRoute } from "../../lib/route_module.js"
 
 export async function Layout({
   children,

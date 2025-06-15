@@ -1,5 +1,5 @@
 import { csrfField } from "adonisjsx";
-import { defineRoute } from "../../../lib/routeModule.js";
+import { defineRoute } from "../../../lib/route_module.js";
 
 export default defineRoute({
   meta() {
