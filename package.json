@@ -63,6 +63,7 @@
     "adonisjsx": "^0.6.1",
     "better-sqlite3": "^11.10.0",
     "edge.js": "^6.2.1",
+    "fast-glob": "^3.3.3",
     "luxon": "^3.6.1",
     "reflect-metadata": "^0.2.2"
   },

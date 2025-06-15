@@ -4,11 +4,13 @@ import app from "@adonisjs/core/services/app"
 const pagesDir = app.makePath('app', 'pages')
 const { default: rootRoute } = await import(`${pagesDir}/root.js`)
 
-export async function resolvePage(ctx: HttpContext, verb: 'GET' | 'POST') {
+export async function resolvePage(
+  ctx: HttpContext,
+  route: any,
+  verb: 'GET' | 'POST'
+) {
   const isRoot = ctx.request.url() === '/'
   const pathname = isRoot ? '/route' : `${ctx.request.url()}/route`
-  const module = await import(`${pagesDir}${pathname}.js`)
-  const route = module.default
   if (!route) {
     throw new Error(`Missing default export from route module ${pathname}`)
   }
