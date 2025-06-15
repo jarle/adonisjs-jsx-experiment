@@ -59,13 +59,15 @@
     "@adonisjs/shield": "^8.2.0",
     "@adonisjs/static": "^1.1.1",
     "@adonisjs/vite": "^4.0.0",
+    "@tailwindcss/vite": "^4.1.10",
     "@vinejs/vine": "^3.0.1",
     "adonisjsx": "^0.6.1",
     "better-sqlite3": "^11.10.0",
     "edge.js": "^6.2.1",
     "fast-glob": "^3.3.3",
     "luxon": "^3.6.1",
-    "reflect-metadata": "^0.2.2"
+    "reflect-metadata": "^0.2.2",
+    "tailwindcss": "^4.1.10"
   },
   "hotHook": {
     "boundaries": [
