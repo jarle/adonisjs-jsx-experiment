@@ -8,6 +8,7 @@ An experimental project combining **AdonisJS 6** with **server-rendered JSX** an
 - 🗂️ **File-based routing** similar to Next.js/Remix
 - 📡 **Loader/Action patterns** for data fetching and mutations
 - 🔒 **Built-in CSRF protection** and session handling
+- 🔥 **Hot Module Replacement (HMR)** for route modules in development
 - 🎯 **No client-side JavaScript** required for basic functionality
 
 ## Quick Start

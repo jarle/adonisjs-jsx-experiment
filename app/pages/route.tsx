@@ -27,7 +27,7 @@ export async function Layout({
 
 export default defineRoute({
   async loader() {
-    return { message: 'world' }
+    return { message: 'world!' }
   },
 
   view({ loaderData }) {

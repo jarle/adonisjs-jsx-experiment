@@ -19,11 +19,25 @@ function fileToUrl(file: string) {
 }
 
 for (const relPath of files) {
-  const url = fileToUrl(relPath) || "/"
-  const modUrl = pathToFileURL(path.resolve(relPath)).href
-  const mod = await import(modUrl)
-  const route = mod.default
+  const routeUrl = fileToUrl(relPath) || "/"
+  const modulePath = pathToFileURL(path.resolve(relPath)).href
+  const resolveModule = async () => {
+    const { default: routeModule } = await import(modulePath)
+    return routeModule
+  }
 
-  router.get(url, ctx => resolvePage(ctx, route, 'GET'))
-  if (route.action) router.post(url, ctx => resolvePage(ctx, route, 'POST'))
+  // HMR in dev
+  if (app.inDev) {
+    router.get(routeUrl, async ctx => {
+      resolvePage(ctx, await resolveModule(), 'GET')
+    })
+    router.post(routeUrl, async ctx => {
+      resolvePage(ctx, await resolveModule(), 'POST')
+    })
+  } else {
+    const route = await resolveModule()
+
+    router.get(routeUrl, ctx => resolvePage(ctx, route, 'GET'))
+    router.post(routeUrl, ctx => resolvePage(ctx, route, 'POST'))
+  }
 }
