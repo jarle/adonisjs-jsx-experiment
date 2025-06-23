@@ -9,11 +9,17 @@ An experimental project combining **AdonisJS 6** with **server-rendered JSX** an
 - 📡 **Loader/Action patterns** for data fetching and mutations
 - 🔒 **Built-in CSRF protection** and session handling
 - 🎯 **No client-side JavaScript** required for basic functionality
-- ⚡ **Hot reload** during development
 
 ## Quick Start
 
 ```bash
+# Create a new project from this template
+npm init adonisjs@latest -- -K="github:jarle/adonisjs-jsx-experiment"
+
+# Or clone this repository
+git clone https://github.com/jarle/adonisjs-jsx-experiment
+cd adonisjs-jsx-experiment
+
 # Install dependencies
 npm install
 
@@ -157,7 +163,7 @@ This experiment explores whether you can get the developer experience of modern 
 ## Development
 
 ```bash
-npm run dev        # Start dev server with hot reload
+npm run dev        # Start dev server
 npm run build      # Build for production
 npm run typecheck  # Run TypeScript checks
 npm run lint       # Run ESLint
